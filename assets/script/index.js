@@ -34,16 +34,28 @@ const bwsrChecked = select('.bwsr-checked');
 const osChecked = select('.os-checked');
 const widthChecked = select('.width-checked');
 const heightChecked = select('.height-checked');
+const sliderBtns = select('input');
 
 const blurArt = select('.blur-art');
 const blurP = select('.blur-p');
+
+bwsrChecked.checked = true;
+osChecked.checked = true;
+widthChecked.checked = true;
+heightChecked.checked = true;
+
 function isCookies(){
   return document.cookie ? 'Cookies: Cookies available' : 'Cookies: No cookies'
 }
 
-
 function getOS(){
-    return `OS: ${window.navigator.platform}`
+
+    if(window.navigator.platform == 'Win32'){
+        return `OS: Windows`
+    } else {
+        return `OS: ${window.navigator.platform}`
+    }
+
 }
 
 function getHeight(){
@@ -54,8 +66,8 @@ function getWidth(){
     return `Screen Width: ${window.innerWidth}`
 }
 
-function getBrowser() { 
 
+function getBrowser() { 
 if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) != -1 ) 
 {
     return(`Browser: Opera`);
@@ -87,11 +99,6 @@ if((navigator.userAgent.indexOf("Opera") || navigator.userAgent.indexOf('OPR')) 
 }
 
  // function to get cookie
-
-onEvent('click', acceptBtn, function(){
-
-})
-
 
 function setCookie(name, value, options = {}){
     options = {
